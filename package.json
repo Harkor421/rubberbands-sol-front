@@ -1,0 +1,21 @@
+{
+  "name": "rubberbands-front",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Rubberbands & More — hold $RBM and get $1 of ETH every 5 minutes: the drawer pays every holder a dollar, biggest bag first, until it runs out.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "vite preview --host 0.0.0.0 --port ${PORT:-4173}"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.4",
+    "vite": "^7.1.7"
+  }
+}
