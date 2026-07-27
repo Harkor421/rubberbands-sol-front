@@ -2,13 +2,15 @@
 
 Hold **$RBM**. Get **$1**. Every 5 minutes. Single-page React 19 / Vite 7
 site for the Rubberbands & More dispenser on Solana
-(`rubberbands-sol-back`): live drawer, next-drop countdown, lore section
-(Robinhood's dividend article invented the company), animated
-how-it-works diagram, paid feed, and "The line": the full ranked holder
-list (scrollable, search-as-you-type wallet filter + exact-match spot
-card), all over the backend's WebSocket, with an offline demo mode.
-Eligibility is open (min 0%), so the stat strip shows holders / holders
-paid / $ paid, no "in line" stat.
+(`rubberbands-sol-back`): centered hero, the drawer strip (live drawer +
+next-drop countdown in one wide band), lore section (Robinhood's
+dividend article invented the company), stat strip, animated
+how-it-works diagram, and "the books": the paid feed side by side with
+"The line", the full ranked holder list (scrollable, search-as-you-type
+wallet filter + exact-match spot card), all over the backend's
+WebSocket, with an offline demo mode. Eligibility is open (min 0%), so
+the stat strip shows holders / holders paid / $ paid, no "in line"
+stat.
 
 > **For the next agent:** no framework beyond React, no UI deps, no
 > state library. One component file, one stylesheet. Read "Wiring" and
@@ -70,11 +72,13 @@ Chroma-green claymation office supplies, from the brand art:
   `--teal-deep/#0d5c50` ink and 3D extrusion, `--yellow #ffd21f` money,
   pin accents `--blue`/`--red`, `--band #e2cb79` rubber tan.
 - Solana accent: `--purple #8f4bf2` / `--purple-deep #6d2fd0`, a
-  claymation take on Solana's #9945FF. Used sparingly: the "now
-  dispensing SOL" hero sticker, a couple of pushpins (hero deco,
-  factoid, one rain pin), the diagram's step-02 badge, and the lavender
-  "ON SOLANA" item in the tape. The yellow stays the money color; the
-  purple is the partner accent, not a takeover.
+  claymation take on Solana's #9945FF. Used sparingly: a couple of
+  pushpins (hero deco, factoid, one rain pin), the diagram's step-02
+  badge, the lavender "ON SOLANA" item in the tape, and the middle stat
+  card (`.stat-pop`, purple paper with cream ink). The old "now
+  dispensing SOL" hero sticker is gone; the tape carries the Solana
+  callout now. The yellow stays the money color; the purple is the
+  partner accent, not a takeover.
 - Type: **Titan One** display (class `.ext`/`.h2`/`.mega-line` adds the
   6-step teal extrusion text-shadow), **Nunito** body, **JetBrains
   Mono** numbers. Loaded in `index.html`.
@@ -113,6 +117,29 @@ public/dividends-article.jpg   Robinhood Learn screenshot for the #lore
                   section (source of the name; highlights baked into the
                   image)
 ```
+
+### Page order (top to bottom)
+
+1. Tape ticker (the "ON SOLANA" lavender item lives here).
+2. Nav: sound toggle, The lore -> `#lore`, How it works -> `#how`,
+   The books -> `#books`, GET $RBM.
+3. Hero: one centered column, ~720px (`.hero` is flex-column now, no
+   `.hero-l`): eyebrow, mega headline, sub copy, CTA row, CA button,
+   factoid, all center-aligned.
+4. The drawer strip (`.drawer-strip` > `.drawer.drawer-wide`): the
+   pinned paper card stretched full width. `.drawer-flex` puts the
+   countdown huge on the left (clock up to ~80px) and the four drawer
+   rows as compact stat cells (`.dr` restyled) on the right. Under
+   900px it folds back into the classic vertical drawer card.
+5. The lore (`#lore`).
+6. Stat strip: three cards, 28px mono numbers, alternating tilts, the
+   middle card is `.stat-pop` (purple, cream text).
+7. How it works (`#how`): the animated diagram.
+8. The books (`#books`, `.books-grid`): paid feed (PAID SO FAR + total)
+   left, THE LINE (search, list, legend) right. Under 900px they stack
+   in that order. The columns keep ids `#paid` / `#spot` for old links.
+9. Footer: mascot, wallet-agnostic tagline, three BandLoop squiggles,
+   copyright.
 
 ### The lore section (`#lore`)
 
