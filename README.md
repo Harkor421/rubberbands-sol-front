@@ -75,9 +75,8 @@ Chroma-green claymation office supplies, from the brand art:
   claymation take on Solana's #9945FF. Used sparingly: a couple of
   pushpins (hero deco, factoid, one rain pin), the diagram's step-02
   badge, the lavender "ON SOLANA" item in the tape, and the middle stat
-  card (`.stat-pop`, purple paper with cream ink). The old "now
-  dispensing SOL" hero sticker is gone; the tape carries the Solana
-  callout now. The yellow stays the money color; the purple is the
+  card (`.stat-pop`, purple paper with cream ink). The old purple hero
+  sticker is gone; the tape carries the Solana callout now. The yellow stays the money color; the purple is the
   partner accent, not a takeover.
 - Type: **Titan One** display (class `.ext`/`.h2`/`.mega-line` adds the
   6-step teal extrusion text-shadow), **Nunito** body, **JetBrains
