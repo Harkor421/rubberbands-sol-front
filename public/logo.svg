@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <!-- Rubberbands & More — the ball, on chroma green -->
+  <rect width="120" height="120" rx="26" fill="#3ec504"/>
+  <defs>
+    <clipPath id="bc"><circle cx="60" cy="74" r="38"/></clipPath>
+  </defs>
+  <circle cx="60" cy="74" r="38" fill="#e2cb79"/>
+  <g clip-path="url(#bc)" fill="none" stroke-linecap="round">
+    <ellipse cx="60" cy="74" rx="37" ry="30" stroke="#efdf9b" stroke-width="4.6"/>
+    <ellipse cx="60" cy="74" rx="37.5" ry="14" transform="rotate(-24 60 74)" stroke="#d8bc63" stroke-width="5"/>
+    <ellipse cx="60" cy="74" rx="36.5" ry="22" transform="rotate(38 60 74)" stroke="#c7a94f" stroke-width="4.6"/>
+    <ellipse cx="60" cy="74" rx="37.5" ry="8" transform="rotate(72 60 74)" stroke="#8e9d68" stroke-width="4.2"/>
+    <ellipse cx="60" cy="74" rx="36.5" ry="25" transform="rotate(-58 60 74)" stroke="#cb854e" stroke-width="4.6"/>
+    <ellipse cx="60" cy="74" rx="34.5" ry="18" transform="rotate(12 60 74)" stroke="#e5d48d" stroke-width="4.2"/>
+    <ellipse cx="60" cy="74" rx="37" ry="27" transform="rotate(60 60 74)" stroke="#d9c06b" stroke-width="3.8"/>
+    <ellipse cx="60" cy="74" rx="32.5" ry="11" transform="rotate(-40 60 74)" stroke="#b49f52" stroke-width="3.8"/>
+    <path d="M31 56 Q37 43 50 39" stroke="#f7ecb6" stroke-width="4.6"/>
+  </g>
+  <circle cx="60" cy="74" r="38" fill="none" stroke="#b89a4e" stroke-width="1.6" opacity="0.55"/>
+  <!-- googly eyes + quizzical brows -->
+  <circle cx="45" cy="40" r="13.5" fill="#fff"/>
+  <circle cx="47.5" cy="42.5" r="6.4" fill="#141414"/>
+  <circle cx="75" cy="45" r="12" fill="#fff"/>
+  <circle cx="76.8" cy="47.5" r="5.7" fill="#141414"/>
+  <path d="M31 26 Q43 15 56 21" fill="none" stroke="#141414" stroke-width="5" stroke-linecap="round"/>
+  <path d="M65 31 Q75 21 88 27" fill="none" stroke="#141414" stroke-width="4.6" stroke-linecap="round"/>
+</svg>
