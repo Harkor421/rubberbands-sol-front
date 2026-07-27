@@ -169,11 +169,12 @@ body::after {
 .btn.hollow:hover { background: rgba(244, 238, 198, 0.22); transform: translate(-1px, -1px); }
 .btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
 
-/* ============================== hero ============================== */
+/* ==================== hero (one centered column) ================== */
 .hero {
   position: relative;
-  display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 34px;
-  align-items: center; padding: 54px 0 34px;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  max-width: 720px; margin: 0 auto;
+  padding: 54px 0 10px;
 }
 .eyebrow {
   display: inline-block;
@@ -190,24 +191,13 @@ body::after {
 }
 .mega-line.hot {
   color: var(--yellow);
-  transform: rotate(-1.6deg); transform-origin: left center;
+  transform: rotate(-1.6deg); transform-origin: center;
   animation: hot-bounce 3.4s ease-in-out infinite;
 }
 @keyframes hot-bounce { 0%, 100% { transform: rotate(-1.6deg) translateY(0); } 50% { transform: rotate(-1.6deg) translateY(-5px); } }
-/* the purple "now dispensing SOL" sticker under the mega heading */
-.sol-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  margin-top: 16px; padding: 7px 15px;
-  font-family: var(--display); font-size: 14.5px; letter-spacing: 0.06em;
-  text-transform: uppercase;
-  background: var(--purple); color: #fff;
-  border: 3px solid var(--teal-deep); border-radius: 11px;
-  box-shadow: 4px 5px 0 var(--purple-deep);
-  transform: rotate(-1.6deg);
-}
-.hero-sub { max-width: 520px; margin: 20px 0 0; font-size: 15.5px; line-height: 1.65; color: var(--ink); }
+.hero-sub { max-width: 560px; margin: 20px auto 0; font-size: 15.5px; line-height: 1.65; color: var(--ink); }
 .hero-sub strong { font-weight: 900; }
-.hero-cta { display: flex; gap: 14px; align-items: center; margin-top: 26px; flex-wrap: wrap; }
+.hero-cta { display: flex; gap: 14px; align-items: center; justify-content: center; margin-top: 26px; flex-wrap: wrap; }
 .ca {
   display: inline-flex; align-items: center; gap: 10px; margin-top: 22px;
   font-family: var(--mono); font-size: 12.5px;
@@ -231,7 +221,7 @@ body::after {
   border: 3px solid var(--teal-deep); border-radius: 11px;
   box-shadow: 4px 5px 0 var(--teal-deep);
   font-size: 13px; line-height: 1.45; max-width: 460px;
-  transform: rotate(-1deg);
+  text-align: left; transform: rotate(-1deg);
 }
 .factoid svg { flex: none; }
 .factoid strong { font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; }
@@ -239,12 +229,12 @@ a.factoid { cursor: pointer; transition: transform 0.12s ease; }
 a.factoid:hover { transform: rotate(-1deg) translate(-1px, -1px); }
 .factoid-more { color: var(--teal-deep); font-weight: 900; text-decoration: underline; white-space: nowrap; }
 
-/* floating desk clutter */
+/* floating desk clutter, nudged outside the centered column */
 .deco { position: absolute; z-index: 0; pointer-events: none; animation: bob 6s ease-in-out infinite alternate; }
-.deco-pin1 { top: 4px; right: 40%; transform: rotate(14deg); }
-.deco-pin2 { bottom: 40px; left: -6px; transform: rotate(-18deg); animation-delay: 1.2s; }
-.deco-band1 { top: 30px; right: -14px; color: var(--band); animation-delay: 0.6s; }
-.deco-band2 { bottom: -6px; right: 34%; color: var(--band); transform: rotate(-24deg); animation-delay: 1.8s; }
+.deco-pin1 { top: 4px; right: 12%; transform: rotate(14deg); }
+.deco-pin2 { bottom: 40px; left: -48px; transform: rotate(-18deg); animation-delay: 1.2s; }
+.deco-band1 { top: 30px; right: -54px; color: var(--band); animation-delay: 0.6s; }
+.deco-band2 { bottom: -6px; left: 10%; color: var(--band); transform: rotate(-24deg); animation-delay: 1.8s; }
 @keyframes bob { from { translate: 0 0; } to { translate: 0 -12px; } }
 
 /* the drawer card — a pinned paper note */
@@ -283,18 +273,41 @@ a.factoid:hover { transform: rotate(-1deg) translate(-1px, -1px); }
 .dr b { font-family: var(--mono); font-size: 14.5px; color: var(--ink); }
 .drawer-note { margin: 12px 0 0; font-size: 12.5px; line-height: 1.55; color: var(--ink-soft); }
 
+/* the drawer strip: the same card stretched into a full-width band */
+.drawer-strip { margin-top: 44px; }
+.drawer-wide { transform: rotate(-0.4deg); }
+.drawer-flex {
+  display: grid; grid-template-columns: minmax(230px, 0.85fr) 1.75fr;
+  gap: 24px; align-items: stretch; margin-top: 16px;
+}
+.drawer-wide .drawer-timer { margin: 0; justify-content: center; }
+.drawer-wide .dt-clock { font-size: clamp(52px, 6.5vw, 80px); }
+.drawer-wide .drawer-rows { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.drawer-wide .dr {
+  flex-direction: column; justify-content: center; align-items: flex-start; gap: 5px;
+  padding: 12px 14px;
+  background: #fbf7dd; border: 2px dashed var(--line); border-radius: 12px;
+}
+.drawer-wide .dr span { font-size: 10.5px; font-weight: 900; letter-spacing: 0.09em; text-transform: uppercase; }
+.drawer-wide .dr b { font-size: 15.5px; line-height: 1.35; overflow-wrap: anywhere; }
+
 /* ============================ stat strip ========================== */
-.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 26px 0 0; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 84px 0 0; }
 .stat {
   position: relative;
   background: var(--paper); border: 3px solid var(--teal-deep); border-radius: 14px;
   box-shadow: 4px 5px 0 var(--teal-deep);
-  padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 1px;
-  transform: rotate(-0.5deg);
+  padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 1px;
+  transform: rotate(-1.1deg);
 }
-.stat:nth-child(even), .rev:nth-child(even) .stat { transform: rotate(0.5deg); }
-.stat b { font-family: var(--mono); font-size: 20px; color: var(--ink); }
+.stat:nth-child(even), .rev:nth-child(even) .stat { transform: rotate(1.1deg); }
+.stat b { font-family: var(--mono); font-size: 28px; color: var(--ink); }
 .stat span { font-size: 11.5px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft); }
+/* one card gets the Solana purple treatment */
+.stat.stat-pop { background: var(--purple); box-shadow: 4px 5px 0 var(--purple-deep); }
+.stat.stat-pop b, .stat.stat-pop span { color: var(--paper); }
+.stat.stat-pop .smiley { color: var(--paper); opacity: 0.6; }
+.stat.stat-pop:hover { box-shadow: 6px 8px 0 var(--purple-deep); }
 .smiley { position: absolute; right: 12px; bottom: 10px; color: var(--teal); opacity: 0.5; }
 
 /* ============================ sections ============================ */
@@ -465,8 +478,10 @@ a.factoid:hover { transform: rotate(-1deg) translate(-1px, -1px); }
 .lore-pin { position: absolute; top: -18px; left: 50%; transform: translateX(-50%) rotate(-6deg); }
 .lore-fig figcaption { margin-top: 10px; text-align: center; font-family: var(--mono); font-size: 11.5px; font-weight: 700; color: var(--ink-soft); }
 
-/* ========================== paid + feed =========================== */
-.paid { margin-top: 84px; }
+/* ============= the books: paid feed + the line, side by side ============= */
+.books { margin-top: 84px; padding-bottom: 20px; }
+.books-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 44px; align-items: start; }
+.books-col { min-width: 0; }
 .paid-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; margin-bottom: 18px; }
 .paid-total { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
 .pt-num {
@@ -511,7 +526,6 @@ a.factoid:hover { transform: rotate(-1deg) translate(-1px, -1px); }
 .f-empty { padding: 38px; text-align: center; color: var(--ink-soft); }
 
 /* =========================== your spot ============================ */
-.spot { margin-top: 84px; max-width: 660px; padding-bottom: 20px; }
 .spot-sub { margin: 0 0 16px; color: var(--paper); font-size: 14.5px; font-weight: 800; }
 .checker {
   display: flex; align-items: center;
@@ -578,6 +592,9 @@ a.factoid:hover { transform: rotate(-1deg) translate(-1px, -1px); }
   color: var(--paper); font-size: 13px; font-weight: 800; text-align: center;
 }
 .foot-ball { filter: drop-shadow(3px 4px 0 rgba(13, 92, 80, 0.5)); }
+.foot p { margin: 0; }
+.foot-tag { max-width: 480px; font-size: 14px; }
+.foot-bands { display: flex; align-items: center; justify-content: center; gap: 18px; margin: 2px 0 4px; color: var(--band); opacity: 0.9; }
 
 /* ============================= toasts ============================= */
 .toast-host {
@@ -626,8 +643,8 @@ a.factoid:hover { transform: rotate(-1deg) translate(-1px, -1px); }
   content: ""; position: absolute; inset: -30px -10px 0; z-index: -1; pointer-events: none;
   background-image: radial-gradient(rgba(244, 238, 198, 0.35) 1.3px, transparent 1.4px);
   background-size: 26px 26px;
-  -webkit-mask-image: radial-gradient(58% 68% at 66% 32%, #000, transparent 72%);
-  mask-image: radial-gradient(58% 68% at 66% 32%, #000, transparent 72%);
+  -webkit-mask-image: radial-gradient(64% 68% at 50% 30%, #000, transparent 72%);
+  mask-image: radial-gradient(64% 68% at 50% 30%, #000, transparent 72%);
 }
 
 /* countdown urgency */
@@ -661,8 +678,24 @@ a.factoid:hover { transform: rotate(-1deg) translate(-1px, -1px); }
 
 /* =========================== responsive =========================== */
 @media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; padding-top: 40px; }
+  .hero { padding-top: 40px; }
   .drawer { transform: none; }
+  /* the drawer strip folds back into the classic vertical card */
+  .drawer-strip { margin-top: 36px; }
+  .drawer-flex { display: block; margin-top: 0; }
+  .drawer-wide .drawer-timer { margin: 18px 0; }
+  .drawer-wide .dt-clock { font-size: clamp(40px, 4.6vw, 54px); }
+  .drawer-wide .drawer-rows { display: flex; flex-direction: column; gap: 0; }
+  .drawer-wide .dr {
+    flex-direction: row; justify-content: space-between; align-items: baseline; gap: 10px;
+    padding: 9px 2px; background: transparent;
+    border: 0; border-bottom: 2px dashed rgba(13, 92, 80, 0.16); border-radius: 0;
+  }
+  .drawer-wide .dr:last-child { border-bottom: 0; }
+  .drawer-wide .dr span { font-size: inherit; font-weight: inherit; letter-spacing: normal; text-transform: none; }
+  .drawer-wide .dr b { font-size: 14.5px; }
+  .stats { margin-top: 64px; }
+  .books-grid { grid-template-columns: 1fr; gap: 60px; }
   .lore-grid { grid-template-columns: 1fr; gap: 30px; }
   .lore-fig { transform: rotate(0.6deg); }
   .spot-grid { grid-template-columns: 1fr 1fr; }
@@ -674,7 +707,9 @@ a.factoid:hover { transform: rotate(-1deg) translate(-1px, -1px); }
   .nav-link { display: none; }
   .brand-name { font-size: 20px; }
   .mega-line { font-size: clamp(40px, 11vw, 64px); }
+  .drawer-strip { margin-top: 30px; }
   .stats { grid-template-columns: 1fr; }
+  .books-grid { gap: 52px; }
   .f-sol, .f-time { display: none; }
   .l-pct { display: none; }
   .toast-host { left: 16px; right: 16px; max-width: none; }

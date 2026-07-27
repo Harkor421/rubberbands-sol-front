@@ -349,81 +349,82 @@ export default function App() {
           </button>
           <a className="nav-link" href="#lore">The lore</a>
           <a className="nav-link" href="#how">How it works</a>
-          <a className="nav-link" href="#paid">Paid</a>
-          <a className="nav-link" href="#spot">Holders</a>
+          <a className="nav-link" href="#books">The books</a>
           <a className="btn chunky" href={buyUrl} target="_blank" rel="noreferrer">GET ${TICKER}</a>
         </nav>
       </header>
 
       <main className="page" id="top">
-        {/* hero: split — pitch left, dispenser right */}
+        {/* hero: one centered column, the whole pitch stacked */}
         <section className="hero">
           <span className="deco deco-pin1"><Pin color="#ffd21f" /></span>
           <span className="deco deco-pin2"><Pin color="var(--purple)" /></span>
           <span className="deco deco-band1"><BandLoop size={64} loose /></span>
           <span className="deco deco-band2"><BandLoop size={46} loose /></span>
 
-          <div className="hero-l">
-            <Reveal><span className="eyebrow">office supplies pay better than your job</span></Reveal>
-            <Reveal delay={0.08}><h1 className="mega">
-              <span className="mega-line">HOLD ${TICKER}.</span>
-              <span className="mega-line hot">GET $1.</span>
-              <span className="mega-line">EVERY 5 MIN.</span>
-            </h1></Reveal>
-            <Reveal delay={0.12}><span className="sol-badge">◎ now dispensing SOL</span></Reveal>
-            <Reveal delay={0.16}><p className="hero-sub">
-              <strong>Rubberbands &amp; More</strong> is stupid simple: creator fees pile up
-              in the drawer. Every <strong>5 minutes</strong> we hand{" "}
-              <strong>$1 in SOL</strong> to every holder, <strong>biggest bags
-              first</strong>, until the drawer runs out. No staking. No claiming.
-              Just a dollar, on the dot.
-            </p></Reveal>
-            <Reveal delay={0.24} className="hero-cta">
-              <a className="btn chunky big" href={buyUrl} target="_blank" rel="noreferrer">GET ${TICKER} <BandBall size={24} bare /></a>
-              <a className="btn hollow" href="#how">how it works</a>
-            </Reveal>
-            {displayCA && (
-              <Reveal delay={0.3}><button className={`ca ${copied ? "copied" : ""}`} onClick={copyCA}>
-                <span className="ca-tag">CA</span>
-                <span className="ca-val">{displayCA}</span>
-                <span className="ca-copy">{copied ? "copied!" : "copy"}</span>
-              </button></Reveal>
-            )}
-            <Reveal delay={0.36}>
-              <a className="factoid" href="#lore">
-                <Pin color="var(--purple)" size={18} />
-                <span><strong>Fun fact:</strong> Robinhood named this company. We just brought the rubberbands. <span className="factoid-more">see the receipt</span></span>
-              </a>
-            </Reveal>
-          </div>
+          <Reveal><span className="eyebrow">office supplies pay better than your job</span></Reveal>
+          <Reveal delay={0.08}><h1 className="mega">
+            <span className="mega-line">HOLD ${TICKER}.</span>
+            <span className="mega-line hot">GET $1.</span>
+            <span className="mega-line">EVERY 5 MIN.</span>
+          </h1></Reveal>
+          <Reveal delay={0.14}><p className="hero-sub">
+            <strong>Rubberbands &amp; More</strong> is stupid simple: creator fees pile up
+            in the drawer. Every <strong>5 minutes</strong> we hand{" "}
+            <strong>$1 in SOL</strong> to every holder, <strong>biggest bags
+            first</strong>, until the drawer runs out. No staking. No claiming.
+            Just a dollar, on the dot.
+          </p></Reveal>
+          <Reveal delay={0.2} className="hero-cta">
+            <a className="btn chunky big" href={buyUrl} target="_blank" rel="noreferrer">GET ${TICKER} <BandBall size={24} bare /></a>
+            <a className="btn hollow" href="#how">how it works</a>
+          </Reveal>
+          {displayCA && (
+            <Reveal delay={0.26}><button className={`ca ${copied ? "copied" : ""}`} onClick={copyCA}>
+              <span className="ca-tag">CA</span>
+              <span className="ca-val">{displayCA}</span>
+              <span className="ca-copy">{copied ? "copied!" : "copy"}</span>
+            </button></Reveal>
+          )}
+          <Reveal delay={0.32}>
+            <a className="factoid" href="#lore">
+              <Pin color="var(--purple)" size={18} />
+              <span><strong>Fun fact:</strong> Robinhood named this company. We just brought the rubberbands. <span className="factoid-more">see the receipt</span></span>
+            </a>
+          </Reveal>
+        </section>
 
-          <Reveal delay={0.15}>
-          <aside className="drawer">
+        {/* the drawer strip: full-width band, big clock left, drawer cells right */}
+        <section className="drawer-strip">
+          <Reveal delay={0.12}>
+          <aside className="drawer drawer-wide">
             <span className="drawer-pin"><Pin color="#e8501f" /></span>
             <div className="drawer-head">
               <span className="drawer-title">The Drawer</span>
               <span className={`led ${live ? "on" : ""}`}>{live ? "● PAYING OUT" : demo ? "● PREVIEW" : "○ RESTOCKING"}</span>
             </div>
-            <div className="drawer-timer">
-              <span className="dt-label">next dollar drop in</span>
-              <span className={`dt-clock ${paySecs != null && paySecs <= 10 ? "soon" : ""}`}>{paySecs == null ? "--:--" : fmtClock(paySecs)}</span>
-            </div>
-            <div className="drawer-rows">
-              <div className="dr">
-                <span>In the drawer</span>
-                <b>{potSol == null ? "—" : `${fmtQty(potSol)} SOL`}</b>
+            <div className="drawer-flex">
+              <div className="drawer-timer">
+                <span className="dt-label">next dollar drop in</span>
+                <span className={`dt-clock ${paySecs != null && paySecs <= 10 ? "soon" : ""}`}>{paySecs == null ? "--:--" : fmtClock(paySecs)}</span>
               </div>
-              <div className="dr">
-                <span>Drawer value</span>
-                <b>{potUsd == null ? "—" : `$${fmtNum(potUsd)}`}</b>
-              </div>
-              <div className="dr">
-                <span>Covers this round</span>
-                <b>{coverage == null ? "—" : `${Math.min(coverage, eligibleCount ?? coverage).toLocaleString()} of ${(eligibleCount ?? 0).toLocaleString()} holders`}</b>
-              </div>
-              <div className="dr">
-                <span>Payout</span>
-                <b>${fmtNum(payoutUsd)} per holder</b>
+              <div className="drawer-rows">
+                <div className="dr">
+                  <span>In the drawer</span>
+                  <b>{potSol == null ? "—" : `${fmtQty(potSol)} SOL`}</b>
+                </div>
+                <div className="dr">
+                  <span>Drawer value</span>
+                  <b>{potUsd == null ? "—" : `$${fmtNum(potUsd)}`}</b>
+                </div>
+                <div className="dr">
+                  <span>Covers this round</span>
+                  <b>{coverage == null ? "—" : `${Math.min(coverage, eligibleCount ?? coverage).toLocaleString()} of ${(eligibleCount ?? 0).toLocaleString()} holders`}</b>
+                </div>
+                <div className="dr">
+                  <span>Payout</span>
+                  <b>${fmtNum(payoutUsd)} per holder</b>
+                </div>
               </div>
             </div>
             <p className="drawer-note">
@@ -433,13 +434,6 @@ export default function App() {
             </p>
           </aside>
           </Reveal>
-        </section>
-
-        {/* stat strip */}
-        <section className="stats">
-          <Reveal><div className="stat"><b>{eligibleCount == null ? "—" : Math.round(holdersAnim).toLocaleString()}</b><span>holders</span><Smiley /></div></Reveal>
-          <Reveal delay={0.07}><div className="stat"><b>{payoutsTotal ? Math.round(payoutsAnim).toLocaleString() : "—"}</b><span>holders paid</span><Smiley /></div></Reveal>
-          <Reveal delay={0.14}><div className="stat"><b>{paidUsd ? `$${fmtNum(paidAnim)}` : "—"}</b><span>paid to holders</span><Smiley /></div></Reveal>
         </section>
 
         {/* the lore: Robinhood's dividend article invented us */}
@@ -480,6 +474,13 @@ export default function App() {
           </div>
         </section>
 
+        {/* stat strip: the receipts, big mono numbers */}
+        <section className="stats">
+          <Reveal><div className="stat"><b>{eligibleCount == null ? "—" : Math.round(holdersAnim).toLocaleString()}</b><span>holders</span><Smiley /></div></Reveal>
+          <Reveal delay={0.07}><div className="stat stat-pop"><b>{payoutsTotal ? Math.round(payoutsAnim).toLocaleString() : "—"}</b><span>holders paid</span><Smiley /></div></Reveal>
+          <Reveal delay={0.14}><div className="stat"><b>{paidUsd ? `$${fmtNum(paidAnim)}` : "—"}</b><span>paid to holders</span><Smiley /></div></Reveal>
+        </section>
+
         {/* how it works — animated flow diagram */}
         <section className="how" id="how">
           <Reveal><h2 className="h2">HOW THE DOLLARS GET DROPPED</h2></Reveal>
@@ -487,8 +488,10 @@ export default function App() {
           <Reveal className="math" delay={0.15}>your spot = your rank by bag · payout = $1 flat · every 5 minutes · till the drawer runs out</Reveal>
         </section>
 
-        {/* paid feed */}
-        <section className="paid" id="paid">
+        {/* the books: money out on the left, the line on the right */}
+        <section className="books" id="books">
+          <div className="books-grid">
+          <div className="books-col" id="paid">
           <Reveal className="paid-head">
             <h2 className="h2">PAID SO FAR</h2>
             <div className="paid-total">
@@ -496,7 +499,7 @@ export default function App() {
               <span className="pt-l">{payoutsTotal > 0 ? `${payoutsTotal.toLocaleString()} dollars dropped and counting` : "the counter starts at launch"}</span>
             </div>
           </Reveal>
-          <Reveal delay={0.1} className="feed">
+          <Reveal delay={0.08} className="feed">
             {feed.length ? feed.map((p, i) => (
               <div className="f-row" key={`${p.sig}-${i}`}>
                 <BandBall size={20} bare className="f-ball" />
@@ -519,11 +522,11 @@ export default function App() {
               <div className="f-empty">{connected ? "First dollar drops after launch…" : "Opening the drawer…"}</div>
             )}
           </Reveal>
-        </section>
+          </div>
 
-        {/* the line: every holder ranked, scroll it, find yourself */}
-        <section className="spot" id="spot">
-          <Reveal>
+          {/* the line: every holder ranked, scroll it, find yourself */}
+          <div className="books-col" id="spot">
+          <Reveal delay={0.14}>
           <h2 className="h2">THE LINE</h2>
           <p className="spot-sub">Every holder is in line, any bag counts. Sorted by bag size, paid top-down. Scroll the line or search your wallet.</p>
           <div className="checker">
@@ -561,11 +564,19 @@ export default function App() {
           </div>
           <p className="line-legend">rank · wallet · % of supply · $ collected. Yellow rank = the drawer covers that spot this round.</p>
           </Reveal>
+          </div>
+          </div>
         </section>
       </main>
 
       <footer className="foot">
         <BandBall size={44} className="foot-ball" />
+        <p className="foot-tag">The drawer doesn't care which wallet you use. Hold ${TICKER} anywhere and the dollar finds you.</p>
+        <div className="foot-bands" aria-hidden="true">
+          <BandLoop size={34} loose />
+          <BandLoop size={26} loose />
+          <BandLoop size={34} loose />
+        </div>
         <p>© 2026 Rubberbands &amp; More. Office supplies, not financial advice. Bands snap; the risk is yours.</p>
       </footer>
 
