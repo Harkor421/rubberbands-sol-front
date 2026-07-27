@@ -1,8 +1,8 @@
 {
-  "name": "rubberbands-front",
+  "name": "rubberbands-sol-front",
   "private": true,
   "version": "1.0.0",
-  "description": "Rubberbands & More — hold $RBM and get $1 of ETH every 5 minutes: the drawer pays every holder a dollar, biggest bag first, until it runs out.",
+  "description": "Rubberbands & More on Solana — hold $RBM and get $1 of SOL every 5 minutes: the drawer pays every holder a dollar, biggest bag first, until it runs out.",
   "type": "module",
   "scripts": {
     "dev": "vite",
