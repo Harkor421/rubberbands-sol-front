@@ -8,7 +8,7 @@ import React, { useEffect, useId, useMemo, useRef, useState } from "react";
  */
 
 // placeholder URL: patched to the real Railway domain once the backend deploys
-const WS_URL = import.meta.env.VITE_WS_URL || "wss://RBM-SOL-BACK-URL-TBD";
+const WS_URL = import.meta.env.VITE_WS_URL || "wss://rubberbands-sol-back-production.up.railway.app";
 const STATIC_CA = import.meta.env.VITE_CA || "";
 const BUY_BASE = (import.meta.env.VITE_BUY_URL || "https://pump.fun").replace(/\/$/, "");
 const EXPLORER = (import.meta.env.VITE_EXPLORER || "https://solscan.io").replace(/\/$/, "");

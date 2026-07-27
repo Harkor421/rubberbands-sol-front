@@ -20,7 +20,7 @@ paid / $ paid, no "in line" stat.
 |---|---|
 | Production | TBD |
 | Deploy | TBD |
-| Backend | TBD (Railway); until the domain exists the code carries the placeholder `wss://RBM-SOL-BACK-URL-TBD`, patch it in `src/App.jsx` or via `VITE_WS_URL` |
+| Backend | TBD (Railway); until the domain exists the code carries the placeholder `wss://rubberbands-sol-back-production.up.railway.app`, patch it in `src/App.jsx` or via `VITE_WS_URL` |
 
 ## Wiring (the pinned WS contract)
 
@@ -55,7 +55,7 @@ Env overrides (all optional, Vite-style):
 
 | Var | Default | |
 |---|---|---|
-| `VITE_WS_URL` | `wss://RBM-SOL-BACK-URL-TBD` | placeholder, patch after the Railway domain exists |
+| `VITE_WS_URL` | `wss://rubberbands-sol-back-production.up.railway.app` | placeholder, patch after the Railway domain exists |
 | `VITE_CA` | (unset) | pin the mint CA (else it arrives over WS) |
 | `VITE_BUY_URL` | `https://pump.fun` | GET $RBM button target; with a CA the link is `/coin/{CA}` |
 | `VITE_EXPLORER` | `https://solscan.io` | `/account/{addr}` and `/tx/{sig}` links |
